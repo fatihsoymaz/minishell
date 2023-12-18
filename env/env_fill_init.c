@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_fill_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 01:34:14 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/09/16 13:53:05 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/10/03 22:18:13 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ char	*split_env2(char *str)
 
 int	valid_op(char c)
 {
-	return ((c >= 'a' && c <= 'z') ||
-			(c >= 'A' && c <= 'Z') ||
-			(c >= '0' && c <= '9') ||
-			(c == '_'));
+	return ((c >= 'a' && c <= 'z')
+		|| (c >= 'A' && c <= 'Z')
+		|| (c >= '0' && c <= '9')
+		|| (c == '_'));
 }
 
 int	dollar_control(char *str)
@@ -45,6 +45,7 @@ int	dollar_control(char *str)
 	}
 	return (flag);
 }
+
 char	*get_str(char *str, int *pos, int type)
 {
 	int		first;
@@ -61,14 +62,12 @@ char	*get_str(char *str, int *pos, int type)
 char	*env_fill_init(char *str)
 {
 	char	*tmp;
-	char	*new_str;
 
-	new_str = ft_strdup(str);
-	while (ft_strchr(new_str, '$') && dollar_control(new_str))
+	while (ft_strchr(str, '$') && dollar_control(str))
 	{
-		tmp = new_str;
-		new_str = env_fill_str(tmp);
+		tmp = str;
+		str = env_fill_str(tmp);
 		free(tmp);
 	}
-	return (new_str);
+	return (str);
 }

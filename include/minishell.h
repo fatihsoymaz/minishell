@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 01:20:38 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/09/17 12:06:36 by fatihsoymaz      ###   ########.fr       */
+/*   Updated: 2023/11/07 23:37:04 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ typedef struct s_glb
 	char					**paths;
 	int						erorno;
 	int						heredoc;
+	char					*res;
 	t_token					*tokens;
 	t_command				*commands;
 }							t_glb;
@@ -128,8 +129,8 @@ int							valid_op(char c);
 void						new_str_fill(char **new_str, char *str);
 char						*get_env(char *str);
 char						*delete_quote(char *str);
-t_redirection	*fill_redirect(t_token *tokens,
-								t_redirection **redirects);
+t_redirection				*fill_redirect(t_token *tokens,
+									t_redirection **redirects);
 t_execute					*fill_execute(t_token *token, t_execute **execute);
 void						fill_command(t_token *tokens, t_command **commands);
 void						heredoc(int *fd, char *endline);
@@ -141,7 +142,7 @@ void						redirect_outputs(t_command *cmd);
 void						start_builtin(t_execute *execute);
 void						run_cmd(void);
 void						builtin_cd(t_execute *execute);
-void						builtin_echo(t_execute *execute);
+void						builtin_echo(t_execute *execute, int flag);
 void						builtin_env(void);
 void						builtin_exit(t_execute *execute);
 void						builtin_pwd(void);
@@ -176,5 +177,7 @@ void						directory_err(char *str);
 void						no_file_err(char *str);
 void						add_env(char *str);
 void						without_quote_parse(char **str);
-void	words_and_op(char *line, int *i, int *count);
+void						words_and_op(char *line, int *i, int *count);
+void						remove_env(char *del);
+void						change_directory(const char *path);
 #endif

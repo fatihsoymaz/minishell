@@ -55,7 +55,7 @@ clean:
 	@echo "🧽 $(GREEN)Minishell Clean: ${RED}Removed all the \".o\" files${RESET}"
 
 fclean:	clean
-	@make fclean -C ./libft 
+	@make fclean -C ./libft
 	@rm -f $(NAME) 
 	@echo "🧽 $(GREEN)Minishell Fclean: ${RED}Removed the executables${RESET}"
 

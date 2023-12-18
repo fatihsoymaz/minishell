@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dollar_fill.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 01:33:58 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/07/30 20:50:25 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/10/03 22:18:22 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	dollar_fill(t_token *tokens)
 			{
 				tmp = tokens->str;
 				tokens->str = env_fill_init(tmp);
-				free(tmp);
 			}
 		}
 		tokens = tokens->next;

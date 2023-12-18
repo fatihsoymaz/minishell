@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   delete_quate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 01:50:02 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/09/16 14:13:49 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/10/03 22:42:40 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ char	*replace_quote_tools(char *str, int *index, char type)
 		(*index)++;
 	return (new_str);
 }
-
 
 char	*no_quote_tools(char *str, int *i)
 {
@@ -83,16 +82,12 @@ char	*delete_quote(char *str)
 	while (str[i])
 	{
 		if (str[i] == '\"')
-		{
 			data = replace_quote_tools(str, &i, '\"');
-			printf("bak buraya %s\n", data);	
-		}
 		else if (str[i] == '\'')
 			data = replace_quote_tools(str, &i, '\'');
 		else
 			data = no_quote_tools(str, &i);
 		return_new_str(&result, data);
-
 	}
 	free(str);
 	return (result);

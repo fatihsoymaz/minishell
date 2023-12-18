@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 01:29:15 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/09/16 13:39:50 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/10/03 23:33:32 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/minishell.h"
+
+void	change_directory(const char *path)
+{
+	if (chdir(path) != 0)
+	{
+		g_glb.erorno = 1;
+		perror("minishell ");
+	}
+	else
+	{
+		g_glb.erorno = 0;
+	}
+}
 
 int	is_builtin(char *command)
 {
@@ -18,7 +31,7 @@ int	is_builtin(char *command)
 		return (CD);
 	else if (ft_strcmp(command, "env\0") && ft_strlen(command) == 3)
 		return (ENV);
-	else if (ft_strcmp(command, "pwd\0") && ft_strlen(command) == 4)
+	else if (ft_strcmp(command, "pwd\0") && ft_strlen(command) == 3)
 		return (PWD);
 	else if (ft_strcmp(command, "echo\0") && ft_strlen(command) == 4)
 		return (ECO);
@@ -45,7 +58,7 @@ void	start_builtin(t_execute *execute)
 	if (mode == PWD)
 		builtin_pwd();
 	if (mode == ECO)
-		builtin_echo(execute);
+		builtin_echo(execute, 0);
 	if (mode == EXIT)
 		builtin_exit(execute);
 	if (mode == UNSET)

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 01:53:53 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/07/29 07:09:42 by fsoymaz          ###   ########.fr       */
+/*   Created: 2023/10/19 00:35:27 by fsoymaz           #+#    #+#             */
+/*   Updated: 2023/10/19 00:35:29 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	single_quote(char *line, int *i, int *count)
 			words_and_op(line, i, count);
 	}
 }
-
 
 int	tokens_count(char *line)
 {

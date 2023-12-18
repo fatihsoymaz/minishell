@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 01:36:04 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/09/16 14:00:24 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/11/07 23:43:32 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,29 +31,24 @@ void	new_str_fill(char **new_str, char *str)
 char	*env_fill_str(char *str)
 {
 	int		i;
-	int		first;
 	char	*env;
 	char	*result;
-	char	*data;
-
+	printf("first %s\n", str);
+	if (*str == '"')
+		str++;
+	str = str + 1;
 	i = 0;
 	result = NULL;
-	data = get_str(str, &i, '$');
-	new_str_fill(&result, data);
-	first = i;
 	if (str[i] == '?' && ++i)
 		new_str_fill(&result, ft_itoa(g_glb.erorno));
 	else
 	{
 		while (valid_op(str[i]))
 			(i)++;
-		data = ft_substr(str, first, i - first);
-		env = get_env(data);
+		env = get_env(str);
 		new_str_fill(&result, env);
-		free(data);
 	}
-	data = get_str(str, &i, 0);
-	new_str_fill(&result, data);
+	printf("aa %s\n", result);
 	return (result);
 }
 

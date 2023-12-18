@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 01:52:47 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/07/30 11:05:50 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/11/07 23:56:31 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,6 @@ static void	handle_sigquit(int sig)
 {
 	(void)sig;
 	rl_redisplay();
-}
-
-void	handle_sigint_heredoc(int sig)
-{
-	(void)sig;
-	write(1, "\n", 1);
-	exit(1);
 }
 
 void	signals_init(void)

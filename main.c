@@ -6,13 +6,13 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 01:28:48 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/09/16 13:13:28 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/10/19 00:34:52 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/minishell.h"
 
-t_glb		g_glb;
+t_glb	g_glb;
 
 int	init_program(int argc, char **argv, char **env)
 {
@@ -45,7 +45,7 @@ int	start_shell(char *input, t_token **tokens, t_redirection **redirection,
 	int	token_count;
 
 	g_glb.commands = 0;
-	*tokens = 0;   
+	*tokens = 0;
 	*redirection = 0;
 	*execute = 0;
 	token_count = tokens_count(input);
